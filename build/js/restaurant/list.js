@@ -1,0 +1,4 @@
+function listRestaurants(){
+
+    alert('todo')
+}

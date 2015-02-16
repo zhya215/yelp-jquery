@@ -1,5 +1,11 @@
-$.get("data/restaurants.json", function(data) {
-    // $( ".result" ).html(data);
-    console.log(data)
-    alert("Load was performed.");
-});
+$( "#doctors" ).on( "click", function( event ) {
+    listDoctors()
+})
+
+$( "#users" ).on( "click", function( event ) {
+    listUsers()
+})
+
+$( "#restaurants" ).on( "click", function( event ) {
+    listRestaurants()
+})

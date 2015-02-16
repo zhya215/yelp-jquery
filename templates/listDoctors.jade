@@ -1,0 +1,8 @@
+each item in items
+    div.row 
+        div.six.columns
+            // onClick='viewDoctor("PFO7RF1xz4ZBuaq46KsLpA")'
+            a(href="#", onClick='viewDoctor("' + item.business_id + '")')
+                = item.name          
+        div.six.columns
+            = item.city

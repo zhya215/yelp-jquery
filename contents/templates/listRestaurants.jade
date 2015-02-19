@@ -1,0 +1,18 @@
+each item in items     
+	div.row
+		div.onerow
+			div.namepiece
+				a(href="#", onClick='viewRestaurant("' + item.business_id + '")')
+					= item.name
+				div.starpiece
+					= item.stars + " stars"
+				div.onerow
+					div.hourpiece
+						each day, dayName in item.hours
+							div.onerow
+								= dayName + " "
+								= day.open + "-"
+								= day.close
+				div.onerow
+					div.addresspiece
+						= item.full_address

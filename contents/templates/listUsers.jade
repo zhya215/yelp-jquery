@@ -1,6 +1,9 @@
 each item in items
     div.row 
         div.six.columns
-            // onClick='viewDoctor("PFO7RF1xz4ZBuaq46KsLpA")'
+
+            // onClick='viewUser("PFO7RF1xz4ZBuaq46KsLpA")'
             a(href="#", onClick='viewUser("' + item.user_id + '")')
                 = item.name          
+        div.six.columns
+            = item.city

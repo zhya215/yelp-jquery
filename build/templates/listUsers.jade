@@ -1,6 +1,18 @@
-each item in items
-    div.row 
-        div.six.columns
-            // onClick='viewDoctor("PFO7RF1xz4ZBuaq46KsLpA")'
-            a(href="#", onClick='viewUser("' + item.user_id + '")')
-                = item.name          
+- var i = 0
+	while i < items.length
+		div.row
+			- var endInd = i + 2
+			while i < endInd && i < items.length
+				div.six.columns.usercell
+					- var item = items[i]
+					div.six.columns
+					
+				
+						img(src='http://wiseheartdesign.com/images/articles/default-avatar.png' height='42' width='42').vcenter
+						a( href='#', style="position: relative; bottom: 18px; left:20px;", onClick='viewUser("' + item.user_id + '")')
+							= item.name
+				
+					div(style="position: relative; top: 10px;").six.columns
+						font(size ='1')&nbsp;&nbsp;Yelping since: #{item.yelping_since} Rating: #{item.average_stars}
+					- i = i + 1
+		br

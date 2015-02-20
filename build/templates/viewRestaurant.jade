@@ -1,0 +1,23 @@
+// display the detail of the first item
+div.twelve.columns.indonecell
+	div.onerow
+		div.indnamepiece
+			h5= item.name
+		div.starpiece
+			h5= item.stars + " stars"
+		div.onerow
+			div.hourpiece
+				each day, dayName in item.hours
+					div.onerow
+						= dayName + " "
+						= day.open + "-"
+						= day.close
+		div.onerow
+			div.addresspiece
+				= item.full_address
+		div.onerow
+			div.openpiece
+				= "Is this place open?  " + item.open + "!"
+		div.onerow
+			div.reviewpiece
+				= "Review Count: " + item.review_count

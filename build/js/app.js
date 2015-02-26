@@ -10,6 +10,8 @@ $( "#restaurants" ).on( "click", function( event ) {
     listRestaurants()
 })
 
+console.log("A")
+
 var oauth = OAuth({
     consumer: {
         public: '84KVVg4XymO_ESQUjSftwQ',

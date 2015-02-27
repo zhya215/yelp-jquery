@@ -1,0 +1,44 @@
+div.row
+	div.three.columns
+	h5 Search
+	div.row
+		.col-md-4
+			.form-group.form-group-default
+				label Location            
+				input#location.form-control(type='text', required='') 
+		.col-md-4
+			.form-group.form-group-default
+				label Name            
+				input#name.form-control(type='text', required='')                
+		.col-md-4                         
+			button.btn.btn-primary(onClick='searchByName($("#location").val(), $("#name").val())') Search
+	div.columns
+		each item in items     
+			div.row
+				div.onerow
+					div.six.columns.onecell
+						div.namepiece
+							|Name: 
+							= item.name
+						div.row
+							div
+								| Phone Number: 
+								= item.display_phone
+						div.row
+							div
+								| City: 
+								= item.location.city
+							div
+								| Address: 
+								= item.location.address
+						div.row
+							div
+								| Rating: 
+								= item.rating
+						div.row
+							div
+								| Link: 
+								a(href=item.url)
+									= item.name
+	
+

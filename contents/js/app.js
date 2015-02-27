@@ -10,6 +10,10 @@ $( "#restaurants" ).on( "click", function( event ) {
     listRestaurants()
 })
 
+$("#businesses").on("click", function(event){
+    listBusinesses()
+})
+
 console.log("A")
 
 var oauth = OAuth({

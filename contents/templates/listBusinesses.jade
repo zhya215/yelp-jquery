@@ -4,14 +4,22 @@ div.row
 	div.row
 		.col-md-4
 			.form-group.form-group-default
-				label Location            
-				input#location.form-control(type='text', required='') 
+				label Location 
+				if(locationEntry)
+					input#location.form-control(type='text', required='', value='#{locationEntry}')
+				else           
+					input#location.form-control(type='text', required='')
+		.col-md-4                         
+			button.btn.btn-primary(onClick='searchByLocation($("#location").val())') Search
 		.col-md-4
 			.form-group.form-group-default
 				label Name            
-				input#name.form-control(type='text', required='')                
+				if(nameEntry)
+					input#name.form-control(type='text', required='', value='#{nameEntry}')
+				else           
+					input#name.form-control(type='text', required='')
 		.col-md-4                         
-			button.btn.btn-primary(onClick='searchByName($("#location").val(), $("#name").val())') Search
+			button.btn.btn-primary(onClick='searchByName( $("#name").val(), $("#location").val())') Search
 	div.columns
 		each item in items     
 			div.row

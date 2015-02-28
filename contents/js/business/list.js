@@ -1,4 +1,4 @@
-
+var _ = require('lodash')
 
 function listBusinesses(){
     console.log('listing businesses')
@@ -14,32 +14,49 @@ function listBusinesses(){
     })
 }
 
-function searchByName(location, name){
-    console.log('searching businesses')
-    if(location && name){
-        var replaced_location = location.split(' ').join('+')
-        console.log(replaced_location)
-        $.get("https://agile-woodland-5195.herokuapp.com/v2/search?term=business&location="+replaced_location, function(data) {
-        var businesses = (JSON.parse(data)).businesses
-        var business=_.find(businesses, {"name": name})
-       /* for(i = 0; i < businesses.length; i++){
-            if((businesses[i]).name === name){
-                business=businesses[i]
-                break
-            }
-        }*/
-            $.get("https://agile-woodland-5195.herokuapp.com/v2/business/lakewood-garage-door-lakewood", function(data) {
+function searchByName(name, location){
+        if(!(location && name)){
+            alert("Please enter name and location")
+            return
+        }
+        $.get("https://agile-woodland-5195.herokuapp.com/v2/search?term=business&location=" + location, function(data) {
+                var prebusinesses = (JSON.parse(data).businesses)
+
+                var businesses = []
+                for(index in prebusinesses){
+                        var testbusiness = prebusinesses[index];
+                        if(testbusiness.name === name)
+                            businesses.push(testbusiness)
+                }
+                $.get("/yelp-jquery/templates/listBusinesses.jade",  function(template) {
+                 var html = jade.render(template, {
+                  items: businesses,
+                  nameEntry: name,
+                  locationEntry: location
+             })
+             $("#list").html(html)
+             })
+
+        })
+
+    }
+
+function searchByLocation(location){
+    if(!location){
+            alert("Please enter location")
+            return
+        }
+
+
+        $.get("https://agile-woodland-5195.herokuapp.com/v2/search?term=business&location=" + location,  function(data) {
+                var businesses = (JSON.parse(data)).businesses
                 $.get("/yelp-jquery/templates/listBusinesses.jade", function(template) {
                     var html = jade.render(template, {
-                        items: JSON.parse(data)
+                      items: businesses,
+                      locationEntry: location
                     })
                     $("#list").html(html)
                 })
-            }) 
+
         })
     }
-    else{
-        alert('please fill location and name')
-    }
-
-}

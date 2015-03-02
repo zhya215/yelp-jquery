@@ -1,0 +1,30 @@
+h1= item.name
+div.row
+    div.six.columns 
+        b Yelping Since:
+    div.six.columns= item.yelping_since
+div.row
+    div.six.columns 
+        b Votes
+    div.six.columns
+        div.row
+            div.six.columns Funny:
+            div.six.columns= item.votes.funny
+        div.row
+            div.six.columns Useful:
+            div.six.columns= item.votes.useful
+        div.row
+            div.six.columns Cool:
+            div.six.columns= item.votes.cool
+div.row 
+    div.six.columns
+        b Reviews
+    div.six.columns= item.review_count
+div.row 
+    div.six.columns
+        b Fans
+    div.six.columns= item.fans
+div.row 
+    div.six.columns
+        b Average Rating
+    div.six.columns= item.average_stars

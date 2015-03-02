@@ -1,0 +1,52 @@
+div.row
+	div.three.columns
+	h5 Search
+	div.row
+		.col-md-4
+			.form-group.form-group-default
+				label Location 
+				if(locationEntry)
+					input#location.form-control(type='text', required='', value='#{locationEntry}')
+				else           
+					input#location.form-control(type='text', required='')
+		.col-md-4                         
+			button.btn.btn-primary(onClick='searchByLocation($("#location").val())') Search
+		.col-md-4
+			.form-group.form-group-default
+				label Name            
+				if(nameEntry)
+					input#name.form-control(type='text', required='', value='#{nameEntry}')
+				else           
+					input#name.form-control(type='text', required='')
+		.col-md-4                         
+			button.btn.btn-primary(onClick='searchByName( $("#name").val(), $("#location").val())') Search
+	div.columns
+		each item in items     
+			div.row
+				div.onerow
+					div.six.columns.onecell
+						div.namepiece
+							|Name: 
+							= item.name
+						div.row
+							div
+								| Phone Number: 
+								= item.display_phone
+						div.row
+							div
+								| City: 
+								= item.location.city
+							div
+								| Address: 
+								= item.location.address
+						div.row
+							div
+								| Rating: 
+								= item.rating
+						div.row
+							div
+								| Link: 
+								a(href=item.url)
+									= item.name
+	
+

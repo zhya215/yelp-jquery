@@ -1,5 +1,3 @@
-var _ = require('lodash')
-
 function listBusinesses(){
     console.log('listing businesses')
     $.get("https://agile-woodland-5195.herokuapp.com/v2/search?term=business&location=Denver", function(data) {
